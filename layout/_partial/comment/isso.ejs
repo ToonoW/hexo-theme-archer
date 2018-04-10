@@ -1,0 +1,6 @@
+<% if(theme.comment) { %>
+    <% if(theme.comment.isso) { %>
+    <script data-isso= <%- theme.comment.isso.data_url %> src= <%- theme.comment.isso.src_url %>></script>
+    <section id="isso-thread"></section>
+    <% } %>
+<% } %>
