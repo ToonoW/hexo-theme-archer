@@ -1,17 +1,24 @@
 // ========== global variables ========== //
-$body-background-color: #fdfdfd;
-$feature-color: #f75357;
+$body-background-color: #fff;
+// $feature-color: #f75357;
+// $feature-color: hexo-theme-config('feature-color');
+// TODO: 后续版本更新
+// @if $feature-color=='hexo-theme-config("feature-color")' {
+//     // default feature color
+//     // 如果没有安装hexo-renderer-scss，则无法修改$feature-color，使用默认色
+$feature-color: #c19b8d;
+// }
 $feature-font-family: 'Oswald-Regular',
 'Microsoft Yahei',
 'Source Sans Pro',
 Arial,
-sans-serif !default;
-$base-font-family: 'Microsoft Yahei',
-'Source Sans Pro',
+sans-serif;
+$base-font-family: 'Source Sans Pro',
+'Microsoft Yahei',
+'Helvetica Neue',
 Arial,
-sans-serif !default;
+sans-serif;
 $base-font-size: 16px !default;
-
 // ========== common ========== //
 $container-margin-top: 3rem;
 $selection-color: $feature-color;
@@ -19,9 +26,10 @@ $selection-color: $feature-color;
 @font-face {
     font-family: 'iconfont-archer';
     /* project id 327081 */
-    src: url('//at.alicdn.com/t/font_327081_fsxrcj5pvdq85mi.eot');
-    src: url('//at.alicdn.com/t/font_327081_fsxrcj5pvdq85mi.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_327081_fsxrcj5pvdq85mi.woff') format('woff'), url('//at.alicdn.com/t/font_327081_fsxrcj5pvdq85mi.ttf') format('truetype'), url('//at.alicdn.com/t/font_327081_fsxrcj5pvdq85mi.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_327081_ipgzq4k3c9bsatt9.eot');
+    src: url('//at.alicdn.com/t/font_327081_ipgzq4k3c9bsatt9.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_327081_ipgzq4k3c9bsatt9.woff') format('woff'), url('//at.alicdn.com/t/font_327081_ipgzq4k3c9bsatt9.ttf') format('truetype'), url('//at.alicdn.com/t/font_327081_ipgzq4k3c9bsatt9.svg#iconfont') format('svg');
 }
+
 
 .iconfont-archer {
     font-family: "iconfont-archer" !important;
@@ -34,7 +42,10 @@ $selection-color: $feature-color;
 // ========== header ========== //
 $header-height: 3.5rem;
 $header-border-top-width: 3px;
-$header-border-top-color: rgba(0,0,0,0.75);
+$header-border-top-color: rgba(0,
+0,
+0,
+0.75);
 $header-title-font-family: $feature-font-family;
 $header-menu-width: 1.5rem;
 // ========== profile ========== //

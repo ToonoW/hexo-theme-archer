@@ -16,6 +16,8 @@
     height: calc(100% + 1px);
     width: 100%;
     filter: brightness(.5);
+    -webkit-filter: brightness(.5);
+    -moz-filter: brightness(.5);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -24,7 +26,6 @@
 
 // ========== intro placeholder ========== //
 // 在layout中 //
-
 // ========== main intro meta ========== //
 .site-intro-meta {
     width: 100%;
@@ -39,10 +40,21 @@
     font: 4rem $feature-font-family;
     color: #fff;
     margin: 0;
+    opacity: 0;
+    transition: all 0.5s ease-out 0s;
+    transform: translate(0, -1rem);
 }
 
 .intro-subtitle {
     font: 2rem $feature-font-family;
     color: #fff;
     margin: 0;
+    opacity: 0;
+    transition: all 0.5s ease-out 0.5s;
+    transform: translate(0, -1rem);
+}
+
+.intro-fade-in {
+    opacity: 1;
+    transform: translate(0, 0);
 }

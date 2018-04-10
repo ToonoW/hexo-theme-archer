@@ -9,6 +9,7 @@
     <!-- 404页  -->
     <% } else if (page.layout === "404") { %>
     <% bgURL = theme._404_image || theme.site_header_image; %>
+    <!-- about页 -->
     <% } else if (page.layout === "about") { %>
     <% bgURL = theme.about.image || theme.site_header_image; %>
     <% } %>        
@@ -22,10 +23,11 @@
             <%- theme.main_title || config.title%>
             <!-- 文章页  -->
             <% } else if(is_post()) { %>
-            <%- truncate(strip_html(page.title), {length: 40, omission: '...'}) || '[Untitled Post]' %>
+            <%- truncate(strip_html(page.title), {length: 80, omission: '...'}) || '[Untitled Post]' %>
             <!-- 404 -->
             <% } else if(page.layout === "404") { %>
             <%- page.title || '[404]'%>
+            <!-- about -->
             <% } else if(page.layout === "about" ) { %>
             <%- page.title || 'About' %>
             <% } %>
@@ -42,11 +44,11 @@
             <% if(typeof page.subtitle === 'string') { %>
                 <%- page.subtitle %>
             <% } %>
+            <!-- 404 -->
+            <% } else if (page.layout === "404") { %>
+                <%- page.description %>
+            <% } %>
         </p>
-        <!-- 404 -->
-        <% } else if (page.layout === "404") { %>
-            <p class="intro-subtitle"> <%- page.description %></p>
-        <% } %>
         <!-- 文章页meta -->
         <% if(is_post()) { %>
             <!-- 文章页标签  -->

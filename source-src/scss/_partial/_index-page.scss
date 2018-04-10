@@ -13,10 +13,12 @@
 // ========== abstract content ========== //
 .abstract-content {
     color: #aaa;
+    font: 1rem/1.5rem $base-font-family;
     white-space: normal;
     word-break: break-all;
+    transition: color 0.1s ease-out;
     &:hover {
-        text-decoration: underline;
+        // color: #888;
     }
 }
 
@@ -59,25 +61,24 @@
         font-size: 1rem;
         position: relative;
         overflow: visible;
-        color: $index-post-tag-color;
+        color: #9b9b9b;
         margin-left: 0.4rem;
         &::before {
             position: relative;
             left: -2px;
             content: '#';
         }
-        @include hover-line();
+        @include hover-line($color : #aaa);
     }
 }
 
 // date
 .abstract-date {
     float: left;
-    text-align: center;
-    transition: all 0.2s ease-out;
-    margin-right: 0.2rem;
-    display: inline-block;
     vertical-align: bottom;
+    text-align: center;
+    margin-right: 0.2rem;
+    transition: all 0.2s ease-out;
 }
 
 .abstract-calander::before {

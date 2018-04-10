@@ -8,7 +8,7 @@ let initTag = function () {
     initTagInfo();
 
     // 获取所有文章信息的json
-    function initTagInfo() {
+    function initTagInfo () {
         // jsInfo is from js-info.ejs
         let tagURL = jsInfo.root + 'content.json?t=' + (+new Date());
         let xhr = new XMLHttpRequest();
@@ -29,12 +29,12 @@ let initTag = function () {
     }
 
     // 显示加载失败
-    function showTagLoadFail($tagLoadFail) {
+    function showTagLoadFail ($tagLoadFail) {
         $tagLoadFail[0].style.display = 'block';        
     }
 
     // 建立map
-    function initTagMap(contentJSON) {
+    function initTagMap (contentJSON) {
         for (let postIndex = 0; postIndex < contentJSON.length; postIndex++) {
             let currPostTags = contentJSON[postIndex].tags;
             if (currPostTags.length) {
@@ -51,7 +51,7 @@ let initTag = function () {
     }
 
     // 将对应的postInfo生成dom
-    function createTagDom(postInfo) {
+    function createTagDom (postInfo) {
         let $tagItem = $('<li class="tag-post-item"><span class="tag-post-date">' + archerUtil.dateFormater(new Date(Date.parse(postInfo.date)), 'yyyy/MM/dd') + '</span></li>');
         let $aItem = $('<a class="tag-post-title" href="' + jsInfo.root + postInfo.path + '">' + postInfo.title + '</a>');
         $tagItem.append($aItem);
@@ -61,23 +61,33 @@ let initTag = function () {
     $('.sidebar-tags-name:first').on('click', function (event) {
         event.preventDefault();
         let realTarget = event.target;
-        let realTagName;
         // 点击大框可显示对应tag的文章
         if (this.compareDocumentPosition(realTarget) & 16) {
+            // 确定tagName
             if (realTarget.tagName === 'SPAN') {
                 this.currTagName = realTarget.firstChild.innerHTML;
             } else {
                 this.currTagName = realTarget.innerHTML;
             }
         }
-        realTagName = this.currTagName;
 
-        let indexs = tagMap.get(realTagName);
+        // 判断是否存在对应tag
+        let indexs = tagMap.get(this.currTagName);
         if (!indexs) {
             return;
         }
+
+        // 设置当前选中的tag的样式
+        $(this).find('.sidebar-tag-name-focus').removeClass('sidebar-tag-name-focus');
+        let children = this.children;
+        for (let i = 0; i < children.length; i++) {
+            if (this.currTagName === children[i].firstChild.innerHTML) {
+                children[i].classList.add('sidebar-tag-name-focus');
+            }
+        }
+
+        // 显示tag对应的文章列表
         let indexsArr = indexs.split(',');
-        // append lists
         let frag = document.createDocumentFragment(),
             postList = document.getElementsByClassName('sidebar-tag-list')[0];
         postList.innerHTML = '';
